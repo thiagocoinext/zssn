@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import express, { Application, Request, Response } from 'express';
 
 import swagger from './swagger';
+import userRouter from './src/routes/user';
 // import { pool } from './src/database';
 
 //For env File 
@@ -36,6 +37,10 @@ app.get('/test-connection', async (req: Request, res: Response) => {
     res.status(500).json({ message: 'Failed to connect to database' });
   }
 });
+
+app.use(express.json())
+
+app.use(userRouter)
 
 swagger(app)
 
