@@ -3,7 +3,7 @@ import { User } from "../domain/User";
 import { addUserDb } from '../models/user';
 
 export const addUser = (req: Request, res: Response) => {
-    console.log(req)
+    if (req.body.name === undefined) return res.status(400).json({ error: 'Invalid body' });
     if (req.body === undefined) return res.status(400).json({ error: 'Invalid body' });
 
     const { name, age, gender, lat, long } = req.body as User;
