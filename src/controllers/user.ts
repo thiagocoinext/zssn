@@ -18,7 +18,7 @@ export const addUser = (req: Request, res: Response) => {
 
     addUserDb(newUser)
         .then(() => {
-            res.status(200).json({ message: 'User added successfully' });
+            res.status(201).json({ message: 'User added successfully' });
         })
         .catch((error) => {
             res.status(500).json({ error: 'Failed to add user' });
